@@ -12,7 +12,8 @@ class AlunoController extends Controller
      */
     public function index()
     {
-        return view('Alunos.index');
+        $alunos = Aluno::all();
+        return view('Alunos.index', compact('alunos'));
     }
 
     /**
@@ -66,6 +67,16 @@ class AlunoController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $aluno = Aluno::findOrFail($id);
+        
+        if ($aluno->created_by !== Auth::id()) {
+            abort(403);
+        }
+
+        $aluno->delete();
+
+        return redirect()
+            ->route('alunos.index')
+            ->with('success', 'Aluno excluído com sucesso!');
     }
 }
