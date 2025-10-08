@@ -43,7 +43,8 @@ class AlunoController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $aluno = Aluno::findOrFail($id);
+        return view('alunos.show', ['aluno' => $aluno]);
     }
 
     /**
@@ -51,7 +52,8 @@ class AlunoController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $aluno = Aluno::findOrFail($id);
+        return view('alunos.edit', compact('aluno'));
     }
 
     /**
@@ -59,24 +61,28 @@ class AlunoController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $aluno = Aluno::findOrFail($id);
+
+        $data = $request->validate([
+            'nome'            => 'required|string|max:255',
+            'dataNasc'        => 'nullable|date',
+            'telefone'        => 'nullable|string|max:20',
+        ]);
+
+
+        $aluno->update($data);
+
+        return redirect()
+            ->route('alunos.show', $aluno)
+            ->with('success', 'Aluno atualizado com sucesso!');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(string $id)
     {
         $aluno = Aluno::findOrFail($id);
-        
-        if ($aluno->created_by !== Auth::id()) {
-            abort(403);
-        }
 
         $aluno->delete();
 
-        return redirect()
-            ->route('alunos.index')
-            ->with('success', 'Aluno excluído com sucesso!');
+        return redirect()->route('alunos.index');
     }
 }
