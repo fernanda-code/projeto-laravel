@@ -13,10 +13,9 @@ return new class extends Migration
     {
         Schema::create('treinadores', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('treinador_id');
             $table->string('nome', 100);
-            $table->string('telefone', 15);
             $table->string('especialidade', 100);
+            $table->string('telefone', 15);
             $table->timestamps();
         });
     }

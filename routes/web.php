@@ -5,6 +5,7 @@ use App\Livewire\Settings\Password;
 use App\Livewire\Settings\Profile;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AlunoController;
+use App\Http\Controllers\TreinadorController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -27,5 +28,7 @@ Route::middleware(['auth'])->group(function () {
 });
 
 route::resource('alunos', AlunoController::class)->middleware('auth');
+
+route::resource('treinadores', TreinadorController::class)->middleware('auth');
 
 require __DIR__.'/auth.php';
