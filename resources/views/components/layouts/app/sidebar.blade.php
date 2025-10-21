@@ -14,10 +14,12 @@
             <flux:navlist variant="outline">
                 <flux:navlist.group :heading="__('Platform')" class="grid">
                     <flux:navlist.item icon="home" :href="route('dashboard')" :current="request()->routeIs('dashboard')" wire:navigate>{{ __('Dashboard') }}</flux:navlist.item>
-                    <flux:navlist.item icon="home" :href="route('alunos.create')" :current="request()->routeIs('alunos.create')" wire:navigate>{{ __('Alunos') }}</flux:navlist.item>
-                    <flux:navlist.item icon="home" :href="route('alunos.index')" :current="request()->routeIs('alunos.index')" wire:navigate>{{ __('Listar Alunos') }}</flux:navlist.item>
-                    <flux:navlist.item icon="home" :href="route('treinadores.create')" :current="request()->routeIs('treinadores.index')" wire:navigate>{{ __('Treinadores') }}</flux:navlist.item>
-                    <flux:navlist.item icon="home" :href="route('treinadores.index')" :current="request()->routeIs('treinadores.index')" wire:navigate>{{ __('Listar Treinadores') }}</flux:navlist.item>
+                    <flux:navlist.item icon="user-plus" :href="route('alunos.create')" :current="request()->routeIs('alunos.create')" wire:navigate>{{ __('Novo Aluno') }}</flux:navlist.item>
+                    <flux:navlist.item icon="users" :href="route('alunos.index')" :current="request()->routeIs('alunos.index')" wire:navigate>{{ __('Alunos') }}</flux:navlist.item>
+                    <flux:navlist.item icon="user-plus" :href="route('treinadores.create')" :current="request()->routeIs('treinadores.index')" wire:navigate>{{ __('Novo Treinador') }}</flux:navlist.item>
+                    <flux:navlist.item icon="users" :href="route('treinadores.index')" :current="request()->routeIs('treinadores.index')" wire:navigate>{{ __('Treinadores') }}</flux:navlist.item>
+                    <flux:navlist.item icon="clipboard" :href="route('planos.create')" :current="request()->routeIs('planos.index')" wire:navigate>{{ __('Novo Plano') }}</flux:navlist.item>
+                    <flux:navlist.item icon="book-open" :href="route('planos.index')" :current="request()->routeIs('planos.index')" wire:navigate>{{ __('Planos') }}</flux:navlist.item>
                 </flux:navlist.group>
             </flux:navlist>
 
