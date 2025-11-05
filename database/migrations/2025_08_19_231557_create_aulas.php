@@ -13,10 +13,9 @@ return new class extends Migration
     {
         Schema::create('aulas', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('aula_id');
             $table->date('data');
             $table->time('horario');
-            $table->integer('duracao');
+            $table->varchar('duracao');
             $table->unsignedBigInteger('treinador_id');
             $table->foreign('treinador_id')->references('id')->on('treinadores')->onDelete('cascade');
             $table->timestamps();
