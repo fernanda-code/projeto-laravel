@@ -16,7 +16,7 @@
           type="date"
           name="data"
           id="data"
-          value="{{ old('data', $aula->Data) }}"
+          value="{{ old('data', $aula->data) }}"
           required
         >
         @error('data') <span class="error">{{ $message }}</span> @enderror
@@ -28,7 +28,7 @@
           type="time"
           name="horario"
           id="horario"
-          value="{{ old('horario', $aula->Horario) }}"
+          value="{{ old('horario', $aula->horario) }}"
           required
         >
         @error('horario') <span class="error">{{ $message }}</span> @enderror
@@ -40,22 +40,26 @@
           type="time"
           name="duracao"
           id="duracao"
-          value="{{ old('duracao', $aula->Duracao) }}"
+          value="{{ old('duracao', $aula->duracao) }}"
           required
         >
         @error('duracao') <span class="error">{{ $message }}</span> @enderror
       </div>
 
       <div class="form-group">
-        <label for="idTreinador">Treinador</label>
-        <input
-          type="number"
-          name="idTreinador"
-          id="idTreinador"
-          value="{{ old('idTreinador', $aula->IdTreinador) }}"
-          required
-        >
-        @error('idTreinador') <span class="error">{{ $message }}</span> @enderror
+         <label for="treinador_id">Treinador</label>
+         <select name="treinador_id" id="treinador_id" required>
+            <option value="">Selecione um treinador</option>
+            @foreach($treinadores as $treinador)
+                <option value="{{ $treinador->id }}"
+                    {{ $aula->treinador->id == $treinador->id ? 'selected' : '' }}>
+                    {{ $treinador->nome }}
+                </option>
+            @endforeach
+         </select>
+         @error('treinador_id')
+             <span class="error">{{ $message }}</span>
+         @enderror
       </div>
 
       <div class="form-actions">

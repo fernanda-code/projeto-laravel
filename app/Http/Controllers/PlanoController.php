@@ -12,7 +12,9 @@ class PlanoController extends Controller
      */
     public function index()
     {
-        $planos = Plano::all();
+        $planos = Plano::orderBy('id')
+        ->paginate(5)              
+        ->withQueryString();
         return view('Planos.index', compact('planos'));
     }
 

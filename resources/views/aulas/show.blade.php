@@ -7,15 +7,15 @@
         <h1>Aula {{ $aula->id }}</h1>
 
         <p><strong>Data:</strong> 
-            {{ \Carbon\Carbon::parse($aula->Data)->format('d/m/Y') }}
+            {{ date('d/m/Y', strtotime($aula->data)) }}
         </p>
 
         <p><strong>Horário:</strong> 
-            {{ \Carbon\Carbon::parse($aula->Horario)->format('H:i') }}
+            {{ date('H:i', strtotime($aula->horario)) }}
         </p>
 
         <p><strong>Duração:</strong> 
-            {{ \Carbon\Carbon::parse($aula->Duracao)->format('H:i') }}
+            {{ date('H:i', strtotime($aula->duracao)) }}
         </p>
 
         <p><strong>Treinador:</strong> 

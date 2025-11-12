@@ -48,6 +48,18 @@
                     @endforeach
                 </tbody>
             </table>
+              @if ($alunos->hasPages())
+                <div class="pagination">
+                    <div class="pagination-info">
+                        {{ $alunos->firstItem() }}–{{ $alunos->lastItem() }}
+                        de {{ $alunos->total() }}
+                    </div>
+
+                    <div class="pagination-links">
+                        {{ $alunos->links() }}
+                    </div>
+                </div>
+            @endif
         @endif
     </div>
 </x-layouts.app>

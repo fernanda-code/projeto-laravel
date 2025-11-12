@@ -48,6 +48,18 @@
                     @endforeach
                 </tbody>
             </table>
+             @if ($planos->hasPages())
+                <div class="pagination">
+                    <div class="pagination-info">
+                        {{ $planos->firstItem() }}–{{ $planos->lastItem() }}
+                        de {{ $planos->total() }}
+                    </div>
+
+                    <div class="pagination-links">
+                        {{ $planos->links() }}
+                    </div>
+                </div>
+            @endif
         @endif
     </div>
 </x-layouts.app>

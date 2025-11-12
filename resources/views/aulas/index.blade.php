@@ -27,9 +27,9 @@
                     @foreach($aulas as $aula)
                         <tr>
                             <td>{{ $aula->id }}</td>
-                            <td>{{ \Carbon\Carbon::parse($aula->Data)->format('d/m/Y') }}</td>
-                            <td>{{ \Carbon\Carbon::parse($aula->Horario)->format('H:i') }}</td>
-                            <td>{{ \Carbon\Carbon::parse($aula->Duracao)->format('H:i') }}</td>
+                            <td>{{ date('d/m/Y', strtotime($aula->data)) }}</td>
+                            <td>{{ date('H:i', strtotime($aula->horario)) }}</td>
+                            <td>{{ date('H:i', strtotime($aula->duracao)) }}</td>
                             <td>{{ $aula->treinador->nome ?? '—' }}</td>
                             <td>
                                 <a href="{{ route('aulas.show', $aula) }}" class="link blue">Ver</a>
@@ -50,6 +50,18 @@
                     @endforeach
                 </tbody>
             </table>
+                @if ($aulas->hasPages())
+                <div class="pagination">
+                    <div class="pagination-info">
+                        {{ $aulas->firstItem() }}–{{ $aulas->lastItem() }}
+                        de {{ $aulas->total() }}
+                    </div>
+
+                    <div class="pagination-links">
+                        {{ $aulas->links() }}
+                    </div>
+                </div>
+            @endif
         @endif
     </div>
 </x-layouts.app>

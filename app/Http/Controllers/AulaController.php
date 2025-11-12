@@ -10,7 +10,9 @@ class AulaController extends Controller
 {
     public function index()
     {
-        $aulas = Aula::with('treinador')->get();
+        $aulas = Aula::orderBy('id')
+        ->paginate(5)              
+        ->withQueryString(); 
         return view('aulas.index', compact('aulas'));
     }
 
@@ -53,10 +55,10 @@ class AulaController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'Data' => 'required|date',
-            'Horario' => 'required',
-            'Duracao' => 'required',
-            'IdTreinador' => 'required|exists:Treinadores,IdTreinador',
+            'data' => 'required|date',
+            'horario' => 'required',
+            'duracao' => 'required',
+            'treinador_id' => 'required',
         ]);
 
         $aula = Aula::findOrFail($id);

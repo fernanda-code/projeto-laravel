@@ -48,6 +48,18 @@
                     @endforeach
                 </tbody>
             </table>
+             @if ($treinadores->hasPages())
+                <div class="pagination">
+                    <div class="pagination-info">
+                        {{ $treinadores->firstItem() }}–{{ $treinadores->lastItem() }}
+                        de {{ $treinadores->total() }}
+                    </div>
+
+                    <div class="pagination-links">
+                        {{ $treinadores->links() }}
+                    </div>
+                </div>
+            @endif
         @endif
     </div>
 </x-layouts.app>
