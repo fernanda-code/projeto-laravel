@@ -14,4 +14,8 @@ class Aluno extends Model
         'dataNasc',
         'telefone',
     ];
+    public function aulas()
+    {
+       return $this->belongsToMany(\App\Models\Aula::class, 'alunos_aulas', 'aluno_id', 'aula_id');
+    }
 }

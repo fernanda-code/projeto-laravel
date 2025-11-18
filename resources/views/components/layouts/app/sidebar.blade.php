@@ -20,8 +20,10 @@
                     <flux:navlist.item icon="users" :href="route('treinadores.index')" :current="request()->routeIs('treinadores.index')" wire:navigate>{{ __('Treinadores') }}</flux:navlist.item>
                     <flux:navlist.item icon="clipboard" :href="route('planos.create')" :current="request()->routeIs('planos.index')" wire:navigate>{{ __('Novo Plano') }}</flux:navlist.item>
                     <flux:navlist.item icon="book-open" :href="route('planos.index')" :current="request()->routeIs('planos.index')" wire:navigate>{{ __('Planos') }}</flux:navlist.item>
-                    <flux:navlist.item icon="clipboard" :href="route('aulas.create')" :current="request()->routeIs('aulas.index')" wire:navigate>{{ __('Nova Aula') }}</flux:navlist.item>
-                    <flux:navlist.item icon="book-open" :href="route('aulas.index')" :current="request()->routeIs('aulas.index')" wire:navigate>{{ __('Aulas') }}</flux:navlist.item>
+                    <flux:navlist.item icon="document-plus" :href="route('aulas.create')" :current="request()->routeIs('aulas.index')" wire:navigate>{{ __('Nova Aula') }}</flux:navlist.item>
+                    <flux:navlist.item icon="clipboard-document-list" :href="route('aulas.index')" :current="request()->routeIs('aulas.index')" wire:navigate>{{ __('Aulas') }}</flux:navlist.item>
+                    <flux:navlist.item icon="folder-plus" :href="route('alunos_aulas.create')" :current="request()->routeIs('alunos_aulas.index')" wire:navigate>{{ __('Nova Participação') }}</flux:navlist.item>
+                    <flux:navlist.item icon="face-smile" :href="route('alunos_aulas.index')" :current="request()->routeIs('alunos_aulas.index')" wire:navigate>{{ __('Participações') }}</flux:navlist.item>
                 </flux:navlist.group>
             </flux:navlist>
 

@@ -19,4 +19,8 @@ class Aula extends Model
     {
         return $this->belongsTo(Treinador::class, 'treinador_id');
     }
+    public function alunos()
+    {
+        return $this->belongsToMany(\App\Models\Aluno::class, 'alunos_aulas', 'aula_id', 'aluno_id');
+    }
 }
