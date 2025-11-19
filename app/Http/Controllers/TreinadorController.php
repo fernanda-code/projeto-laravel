@@ -53,7 +53,6 @@ class TreinadorController extends Controller
             'telefone'        => 'nullable|string|max:20',
         ]);
 
-
         $treinador->update($data);
 
         return redirect()

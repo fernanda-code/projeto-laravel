@@ -7,9 +7,6 @@ use App\Models\Plano;
 
 class PlanoController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
         $planos = Plano::orderBy('id')
@@ -18,17 +15,11 @@ class PlanoController extends Controller
         return view('Planos.index', compact('planos'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
         return view('planos.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
         $plano = new Plano([
@@ -40,27 +31,18 @@ class PlanoController extends Controller
         return redirect()->route('planos.index');
     }
 
-    /**
-     * Display the specified resource.
-     */
     public function show(string $id)
     {
         $plano = Plano::findOrFail($id);
         return view('planos.show', ['plano' => $plano]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
     public function edit(string $id)
     {
         $plano = Plano::findOrFail($id);
         return view('planos.edit', compact('plano'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(Request $request, string $id)
     {
         $plano = Plano::findOrFail($id);

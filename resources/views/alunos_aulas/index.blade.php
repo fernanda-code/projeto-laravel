@@ -4,8 +4,10 @@
 </head>
 
 <div class="container">
-    <h1>Participações (Alunos por Aula)</h1>
-
+    <div class="header">
+        <h1>Participações (Alunos por Aula)</h1>
+        <a href="{{ route('alunos_aulas.create') }}" class="btn">Adicionar Participação</a>
+    </div>
     <table class="table">
         <thead>
             <tr>
@@ -23,11 +25,17 @@
                     <td>{{ date('d/m/Y', strtotime($p->aula_data)) }}</td>
                     <td>{{ $p->aula_horario }}</td>
                     <td>
-                        <form action="{{ route('alunos_aulas.destroy', [$p->aluno_id, $p->aula_id]) }}" method="POST">
+                        <form action="{{ route('alunos_aulas.destroy', [$p->aluno_id, $p->aula_id]) }}" method="POST" class="inline" style="display:inline;">
                             @csrf
                             @method('DELETE')
-                            <button class="btn btn-danger">Remover</button>
+                            <button
+                                type="button"
+                                class="btn-excluir link red"
+                                data-nome="Aluno {{ $p->aluno_nome }} na aula do dia {{ date('d/m/Y', strtotime($p->aula_data)) }}">
+                                Remover
+                            </button>
                         </form>
+
                     </td>
                 </tr>
             @endforeach
@@ -45,7 +53,5 @@
             </div>
         </div>
     @endif
-
-    <a href="{{ route('alunos_aulas.create') }}" class="btn btn-primary">Adicionar Participação</a>
 </div>
 </x-layouts.app>

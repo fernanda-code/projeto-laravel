@@ -34,8 +34,6 @@ class AulaController extends Controller
 
         $Aula->save();
 
-        // Aula::create($request->all());
-
         return redirect()->route('aulas.index')->with('success', 'Aula criada com sucesso!');
     }
 
